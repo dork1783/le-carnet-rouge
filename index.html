@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Carnet Rouge</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="titlePanel">
+        <h1 id="mainTitle">LE CARNET<br>ROUGE</h1>
+    </div>
+
+    <div id="musicButton">
+        <button id="toggleMusic">🎵 Play Music</button>
+    </div>
+
+    <audio id="introMusic" src="music/epic.mp3" preload="auto"></audio>
+
+    <div id="icons">
+
+        <div class="icon-block">
+            <div class="icon-title-container">
+                <span class="icon-title">L'histoire</span>
+            </div>
+            <img class="icon" src="asset/1.png" data-target="#panel-story">
+        </div>
+
+
+        <div class="icon-block">
+            <div class="icon-title-container">
+            <span class="icon-title">Les planches</span>
+            </div>
+            <img class="icon" src="asset/2.png" data-target="#panel-planches">
+        </div>
+
+        <div class="icon-block">
+            <div class="icon-title-container">
+            <span class="icon-title">Les personnages</span>
+            </div>
+            <img class="icon" src="asset/3.png" data-target="#panel-personnages">
+        </div>
+
+    </div>
+
+    <!-- PANELS -->
+    <div id="panel-story" class="panel">
+        <button class="close-panel">✖ Fermer</button>
+
+        <div class="panel-content histoire-panel">
+            <h2>Histoire</h2>
+            <p>Tome 1 : Les Disparus<br>
+            Dans un monde où la justice n’est qu’une façade et où les puissants réécrivent la vérité à leur convenance, Emma Sterling tente de survivre à une existence qui s’effondre.
+            Depuis l’enfance, elle a vécu dans la fuite permanente, ballotée de ville en ville par des parents qui ne lui ont jamais expliqué ce qu’ils fuyaient. Leur mort dans un accident suspect la laisse seule, brisée, et rongée par une colère qu’elle ne sait plus contenir.
+
+            Une nuit, dans une chambre d’hôtel, cette colère explose.
+            Un acte irréfléchi, une arrestation immédiate, et la chute commence.
+
+            Mais lors de son identification, un test ADN déclenche une alerte que personne n’attendait.
+            Emma n’est pas une inconnue : elle est la fille d’un couple autrefois lié à ANTICOR, un groupe dissident éradiqué vingt ans plus tôt.
+            Un couple que l’État pensait mort sans descendance.
+            Un couple dont le nom est encore murmuré dans les couloirs du pouvoir.
+
+            Transférée vers une juridiction spéciale, Emma découvre qu’elle a un oncle : Joseph Steed, détective privé réputé, mais brisé par l’alcool et par la disparition de son frère.
+            Steed n’a jamais su qu’il avait une nièce.
+            Il n’a jamais pardonné à son frère d’avoir rejoint ANTICOR.
+            Et il n’a jamais cessé de porter la culpabilité de ne pas avoir pu le sauver.
+
+            Le juge chargé de l’affaire, figure corrompue d’un système qui étouffe toute vérité, propose à Steed un marché :
+            la liberté d’Emma en échange d’une enquête qu’il a toujours refusée.
+            Steed dit non.
+            Jusqu’à ce que les fantômes du passé le rattrapent.
+
+            Avec l’aide de La Carte, un allié insaisissable qui connaît les entrailles de la ville mieux que quiconque, Steed finit par accepter.
+            Emma est libérée, mais la rencontre entre l’oncle et la nièce est glaciale.
+            Deux inconnus liés par un passé qu’on leur a volé.
+            Deux survivants qui n’ont plus rien à perdre.
+
+            Ensemble, ils découvrent que les parents d’Emma n’étaient pas seulement des fugitifs :
+            ils protégeaient un secret capable de faire trembler l’élite mondiale.
+            Un secret enfermé dans un objet disparu, connu sous le nom de Carnet Rouge.
+
+            Ce premier tome suit la naissance fragile d’un trio improbable, soudé par la perte, la rage et un besoin viscéral de vérité.
+            Au fil des pages, l’enquête se transforme en lutte pour la survie, et la survie en quête de justice.
+            Car dans l’ombre, quelqu’un les observe.
+            Quelqu’un sait qu’ils se rapprochent de ce que l’État a passé vingt ans à effacer.
+
+            Et lorsque les flammes s’abattent sur la maison de Steed, une certitude s’impose :
+            le passé n’est pas mort.
+            Il revient réclamer ce qui lui appartient.</p>
+        </div>
+    </div>
+
+    <div id="panel-planches" class="panel">
+        <button class="close-panel">✖ Fermer</button>
+        <div class="panel-content">
+            <h2>Les planches</h2>
+            <p class="intro-planches">
+                Voici une sélection de planches issues de la bande dessinée.  
+                Cliquez sur une miniature pour ouvrir le diaporama.
+            </p>
+            <div class="gallery">
+            <img src="planches/0.jpg" class="thumb" data-index="0">
+            <img src="planches/1.jpg" class="thumb" data-index="1">
+            <img src="planches/2.jpg" class="thumb" data-index="2">
+            <img src="planches/25.jpg" class="thumb" data-index="3">
+            <img src="planches/26.jpg" class="thumb" data-index="4">
+            <img src="planches/36.jpg" class="thumb" data-index="5">
+        </div>
+
+        <!-- Diaporama -->
+        <div id="slideshow" class="slideshow hidden">
+            <button class="nav prev">◀</button>
+            <img id="slide-image" src="">
+            <button class="nav next">▶</button>
+            <button class="back-to-thumbs">Retour aux miniatures</button>
+        </div>
+
+
+        </div>
+    </div>
+
+    <div id="panel-personnages" class="panel">
+    <button class="close-panel">✖ Fermer</button>
+
+    <div class="panel-content">
+        <h2>Les personnages</h2>
+
+        <p class="intro-planches">
+            Voici une sélection de personnages issus de l’univers du Carnet Rouge.  
+            Cliquez sur une miniature pour ouvrir le diaporama.
+        </p>
+
+        <div class="gallery">
+            <img src="personnages/1.jpg" class="thumb-personnages" data-index="0">
+            <img src="personnages/2.jpg" class="thumb-personnages" data-index="1">
+            <img src="personnages/3.jpg" class="thumb-personnages" data-index="2">
+            <img src="personnages/4.jpg" class="thumb-personnages" data-index="3">
+            <img src="personnages/5.jpg" class="thumb-personnages" data-index="4">
+            <img src="personnages/6.png" class="thumb-personnages" data-index="5">
+        </div>
+
+        <!-- Diaporama personnages -->
+        <div id="slideshow-personnages" class="slideshow hidden">
+            <button class="nav prev-personnages">◀</button>
+            <img id="slide-image-personnages" src="">
+            <button class="nav next-personnages">▶</button>
+            <button class="back-to-thumbs-personnages">Retour aux miniatures</button>
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- SCRIPT GLOBAL -->
+    <script>
+    const thumbnails = document.querySelectorAll('.thumb');
+    const slideshow = document.getElementById('slideshow');
+    const slideImage = document.getElementById('slide-image');
+    const backBtn = document.querySelector('.back-to-thumbs');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+
+    let currentIndex = 0;
+
+    // Ouvrir le diaporama
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            currentIndex = parseInt(thumb.dataset.index);
+            showSlide();
+            slideshow.classList.remove('hidden');
+        });
+    });
+
+    // Afficher une image
+    function showSlide() {
+        const src = thumbnails[currentIndex].src;
+        slideImage.src = src;
+    }
+
+    // Navigation
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % thumbnails.length;
+        showSlide();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+        showSlide();
+    });
+
+    // Retour aux miniatures
+    backBtn.addEventListener('click', () => {
+        slideshow.classList.add('hidden');
+    });
+
+    // music
+    const music = document.getElementById("introMusic");
+    const musicButton = document.getElementById("toggleMusic");
+
+    musicButton.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            musicButton.textContent = "⏸️ Pause";
+        } else {
+            music.pause();
+            musicButton.textContent = "▶️ Play";
+        }
+    });
+
+    const icons = document.querySelectorAll(".icon");
+    const titlePanel = document.getElementById("titlePanel");
+
+    icons.forEach(icon => {
+        icon.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const targetPanel = document.querySelector(icon.dataset.target);
+            const rect = icon.getBoundingClientRect();
+
+            // Supprimer clone existant
+            const oldClone = document.querySelector(".clone-icon");
+            if (oldClone) oldClone.remove();
+
+            // Disparition titres + autres icônes
+            document.querySelectorAll(".icon-block").forEach(b => b.style.opacity = 0);
+            document.querySelectorAll(".icon-title").forEach(t => t.style.opacity = 0);
+            document.querySelectorAll(".icon-title-container").forEach(c => c.style.opacity = 1);
+            document.querySelectorAll(".icon").forEach(other => {
+                if (other !== icon) other.style.opacity = 0;
+            });
+
+            // Disparition du titre principal
+            titlePanel.classList.add("fade-out");
+
+            // Clone animé
+            const clone = icon.cloneNode(true);
+            clone.classList.add("clone-icon");
+            clone.style.position = "fixed";
+            clone.style.left = rect.left + "px";
+            clone.style.top = rect.top + "px";
+            clone.style.width = rect.width + "px";
+            clone.style.height = rect.height + "px";
+            clone.style.transition = "all 0.6s ease";
+            clone.style.zIndex = 9999;
+            clone.style.pointerEvents = "none";
+
+            document.body.appendChild(clone);
+            icon.style.opacity = "0";
+
+            setTimeout(() => {
+                clone.style.left = "50%";
+                clone.style.top = "50%";
+                clone.style.transform = "translate(-50%, -50%) scale(1.4)";
+            }, 20);
+
+            setTimeout(() => {
+                targetPanel.classList.add("active");
+            }, 650);
+        });
+    });
+
+    document.querySelectorAll(".close-panel").forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+            document.querySelectorAll(".icon-block").forEach(b => b.style.opacity = 1);
+            document.querySelectorAll(".icon").forEach(icon => icon.style.opacity = 1);
+            document.querySelectorAll(".icon-title").forEach(t => t.style.opacity = 1);
+
+            const clone = document.querySelector(".clone-icon");
+            if (clone) clone.remove();
+
+            titlePanel.classList.remove("fade-out");
+        });
+    });
+    </script>
+    <script>
+    // --- DIAPORAMA PERSONNAGES ---
+
+    const thumbsPerso = document.querySelectorAll('.thumb-personnages');
+    const slideshowPerso = document.getElementById('slideshow-personnages');
+    const slideImagePerso = document.getElementById('slide-image-personnages');
+    const backPerso = document.querySelector('.back-to-thumbs-personnages');
+    const nextPerso = document.querySelector('.next-personnages');
+    const prevPerso = document.querySelector('.prev-personnages');
+
+    let persoIndex = 0;
+
+    // Ouvrir le diaporama
+    thumbsPerso.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            persoIndex = parseInt(thumb.dataset.index);
+            showPersoSlide();
+            slideshowPerso.classList.remove('hidden');
+        });
+    });
+
+    // Afficher une image
+    function showPersoSlide() {
+        const src = thumbsPerso[persoIndex].src;
+        slideImagePerso.src = src;
+    }
+
+    // Navigation
+    nextPerso.addEventListener('click', () => {
+        persoIndex = (persoIndex + 1) % thumbsPerso.length;
+        showPersoSlide();
+    });
+
+    prevPerso.addEventListener('click', () => {
+        persoIndex = (persoIndex - 1 + thumbsPerso.length) % thumbsPerso.length;
+        showPersoSlide();
+    });
+
+    // Retour aux miniatures
+    backPerso.addEventListener('click', () => {
+        slideshowPerso.classList.add('hidden');
+    });
+    </script>
+
+</body>
+</html>
