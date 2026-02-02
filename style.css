@@ -1,0 +1,465 @@
+/* RESET minimal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BACKGROUND FIXE PLEIN ÉCRAN */
+body {
+    min-height: 100vh;
+    background-color: rgb(83, 53, 64);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* NE BOUGE PLUS */
+    align-items: center;
+    position: relative;
+    padding-bottom: 120px; /* pour garder les icônes au centre visuel */
+}
+.close-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ff2b2b;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 60000;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.close-panel:hover {
+    background: #ff5555;
+    transform: scale(1.05);
+}
+
+/* ANIMATION DU TITRE */
+@keyframes neonFlicker {
+    0%   { opacity: 1; }
+    5%   { opacity: 0.4; }
+    7%   { opacity: 1; }
+    10%  { opacity: 0.6; }
+    13%  { opacity: 1; }
+    30%  { opacity: 0.3; }
+    31%  { opacity: 1; }
+    56%  { opacity: 0.5; }
+    57%  { opacity: 1; }
+    85%  { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* PANNEAU DU TITRE */
+#titlePanel {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+/* TITRE PRINCIPAL */
+#mainTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+    color: #ffb35c;
+    letter-spacing: 3px;
+    margin: 0;
+    text-align: center;
+
+    -webkit-text-stroke: 2px #ff2b2b;
+
+    text-shadow:
+        0 0 8px #ff0000,
+        0 0 15px #ff0000,
+        0 0 25px #ff2b2b,
+        0 0 40px #ff2b2b,
+        0 0 60px #ff4d4d;
+
+    animation: neonFlicker 3s infinite;
+}
+
+/* TRANSITION DOUCE POUR LES ICONES */
+.icon {
+    transition: all 0.6s ease;
+    cursor: pointer;
+}
+
+.icon.active {
+    transform: scale(1.2);
+    z-index: 20;
+}
+
+/* Phase 2 : déplacement réel vers le centre */
+.icon.move-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.4);
+    transition: all 0.6s ease;
+    z-index: 30;
+}
+.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background: rgba(20, 10, 10, 0.95);
+    color: #ffb35c;
+    overflow-y: auto;
+    display: none; /* caché au départ */
+    z-index: 50000; /* au-dessus de tout */
+}
+
+.panel.active {
+    display: block;
+}
+
+
+/* ICÔNES QUI DISPARAISSENT */
+.icon.fade {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* BACKGROUND AVEC ALPHA */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("asset/couv.jpg") center/cover no-repeat;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+/* CONTENEUR DES ICONES */
+#icons {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* BLOC VERTICAL ICÔNE + TITRE */
+.icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* TITRES DES ICONES */
+.icon-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    color: #ffb35c;
+    letter-spacing: 1px;
+    transition: opacity 0.6s ease;
+}
+
+/* TITRE DE L’ICÔNE CLIQUÉE */
+.icon-title.active-title {
+    opacity: 0;
+}
+
+/* TITRES DES AUTRES ICONES */
+.icon-title.fade-title {
+    opacity: 0;
+}
+
+/* STYLE DES ICONES */
+#icons img {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+#icons img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* BOUTON MUSIQUE */
+#musicButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 20000; /* au-dessus du clone */
+}
+
+
+#musicButton button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #ffb35c;
+    color: #2c1c1c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+#musicButton button:hover {
+    transform: scale(1.05);
+    background-color: #ff9240;
+}
+.icon-title-container {
+    background: rgba(0, 0, 0, 0.4); /* léger fond sombre */
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 120px; /* largeur cohérente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px); /* optionnel, très classe */
+    transition: opacity 0.6s ease;
+}
+.panel-content {
+    max-width: 800px;        /* largeur idéale pour lecture */
+    margin: 120px auto 40px; /* centré + espace sous le bouton */
+    text-align: center;      /* texte centré */
+    line-height: 1.6;        /* lisibilité */
+    padding: 0 20px;         /* marges latérales */
+}
+.histoire-panel {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    color: #e6e6e6;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Titre */
+.histoire-panel h2 {
+    font-family: "Cinzel", serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c0392b;
+    text-shadow: 0 0 8px rgba(192, 57, 43, 0.5);
+    letter-spacing: 1px;
+}
+
+/* Paragraphe */
+.histoire-panel p {
+    white-space: pre-line;
+    text-align: justify;
+}
+
+/* Première ligne stylée façon roman */
+.histoire-panel p::first-line {
+    font-variant: small-caps;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* Effet de survol subtil */
+.histoire-panel:hover {
+    box-shadow: 0 0 35px rgba(192, 57, 43, 0.25);
+    transition: 0.4s ease;
+}
+/* Intro */
+.intro-planches {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #ddd;
+    letter-spacing: 0.5px;
+}
+
+/* Grille de miniatures */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery .thumb {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery .thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Diaporama */
+.slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.slideshow.hidden {
+    display: none;
+}
+
+#slide-image {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Boutons */
+.back-to-thumbs {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.back-to-thumbs:hover {
+    background: #e74c3c;
+}
+
+/* Flèches */
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.nav.prev {
+    left: 30px;
+}
+
+.nav.next {
+    right: 30px;
+}
+/* Galerie personnages */
+.gallery .thumb-personnages {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery .thumb-personnages:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+/* --- DIAPORAMA PERSONNAGES --- */
+
+#slideshow-personnages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    padding: 20px;
+}
+
+#slideshow-personnages.hidden {
+    display: none;
+}
+
+#slide-image-personnages {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Boutons navigation */
+.prev-personnages,
+.next-personnages {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.prev-personnages:hover,
+.next-personnages:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.prev-personnages { left: 30px; }
+.next-personnages { right: 30px; }
+
+/* Bouton retour */
+.back-to-thumbs-personnages {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.back-to-thumbs-personnages:hover {
+    background: #e74c3c;
+}
